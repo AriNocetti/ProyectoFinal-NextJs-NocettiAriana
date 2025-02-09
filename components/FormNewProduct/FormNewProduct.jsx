@@ -3,8 +3,44 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+//import { ref, uploadBytes, getDownloadURL } from "firebase/storage" este es su import del storage
+
+const createProduct = async (values, file) => {
+    const storageRef = ref(storage, values.slug) //storage
+    const fileSnapshot = await uploadBytes(storageRef, file) //uploadBytes de storage
+    const fileURL = await getDownloadURL(fileSnapshot.ref) //ref y getDownloadURL son de storage
+
+    const docRef = doc(db, "productos", values.slug)
+    return setDoc(docRef, {
+        ...values,
+        image: fileURL
+    }).then(() => console.log("Producto creado exitosamente"))
+}
 
 export default function FormUploadNewProduct() {
+    const [values, setValues] = useState({
+        title: '', 
+        description: '', 
+        inStock: 0,
+        price: 0, 
+        id: '' 
+    })
+    const [file, setFile] = useState(null)
+
+    const handleChange = (e) => {
+        setValues({
+            ...values,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        await createProduct(values, file)
+    }
+
+
+
 return (
     <>
         <Box
