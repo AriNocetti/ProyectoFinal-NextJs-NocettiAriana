@@ -28,6 +28,7 @@ export default function LogInForm (){
                 <h1>Login</h1>
                 <input 
                     type="email"
+                    id="email"
                     value={values.email}
                     required
                     placeholder="Tu email"
@@ -37,6 +38,7 @@ export default function LogInForm (){
                 />
                 <input 
                     type="password"
+                    id="password"
                     value={values.password}
                     required
                     placeholder="Tu password"

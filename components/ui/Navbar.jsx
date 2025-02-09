@@ -22,7 +22,7 @@ export default function Navbar () {
   return(
     <>
       <div className="flex flex-row justify-around items-center bg-[#d2b4de] h-5 p-5 mb-2 pt-7">
-        <Link href="/">
+        <Link href="/productos/todos">
           <h1 className="drop-shadow-md font-medium">Aritti</h1>
         </Link>
         <FormControl variant='standard' fullWidth className='max-w-28'>
@@ -54,7 +54,7 @@ export default function Navbar () {
         <Link href="/cart">
           <CartWidget />
         </Link>
-        <Link href="/login">
+        <Link href="/admin/login">
           <RiLoginBoxLine />
         </Link>
       </div>

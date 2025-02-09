@@ -2,11 +2,10 @@ import { NextResponse } from "next/server"
 import { collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "@/configFirebase"
 
-export async function GET(request, { params }) {
+export async function GET(request) {
     try {
-        console.log("cp params", params);
-        const { category } = params;
-
+        let category = 'todos';
+    
         let productsCollection = collection(db, "productosRopa");
 
         if (category !== "todos") {

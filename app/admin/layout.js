@@ -1,17 +1,26 @@
-"use client";
+// import { useAuthContext } from "@/context/AuthContext";
+// import { redirect } from "next/navigation";
+// import { useEffect } from "react";
 
-import { useAuthContext } from "@/context/AuthContext";
+export default function AdminLayout ({ children }) { //, login
+    // const { user } = useAuthContext()
 
-export default function AdminLayout ({ children, login }) {
-    const { user } = useAuthContext()
+    // useEffect(() => {
+    //     if (user.logged == true){
+    //         redirect("/admin/panel")
+    //     }else{
+    //         redirect("/admin/login")
+    //     }
+    // }, [user.logged])
+
 
     return (
         <>
-            {
+            {/* {
                 user.logged
                     ? children
-                    : login
-            }
+                    : <p>no logueado</p>// : login 
+            } */}{children}
         </>
     )
 }

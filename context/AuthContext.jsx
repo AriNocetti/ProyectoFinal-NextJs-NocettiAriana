@@ -10,17 +10,17 @@ const AuthContext = createContext()
 
 export const useAuthContext = () => useContext(AuthContext)
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({children}) => {
     const [user, setUser] = useState({
         logged: false,
-        email: null,
+        emaiL: null,
         uid: null
     })
 
     const router = useRouter()
 
     const registerUser = async (values) => {
-        await signInWithEmailAndPassword(auth, values.email, values.password)
+        await createUserWithEmailAndPassword(auth, values.email, values.password)
     }
 
     const loginUser = async (values) => {
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
             } else {
                 setUser({
                     logged: false,
-                    email: null,
+                    emaiL: null,
                     uid: null
                 })
             }
@@ -74,5 +74,4 @@ export const AuthProvider = ({ children }) => {
             {children}
         </AuthContext.Provider>
     )
-
 }

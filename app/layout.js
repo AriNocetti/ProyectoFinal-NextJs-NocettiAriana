@@ -29,9 +29,7 @@ export default function RootLayout({ children }) {
       <body>
             <Providers>
               <Navbar/>
-                <div className="h-[calc(100% - 200px)] pb-24">
-                  {children}
-                </div>
+                {children}
               <Footer/>
             </Providers>
       </body>
