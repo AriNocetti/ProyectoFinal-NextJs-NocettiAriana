@@ -14,7 +14,7 @@ function valuetext(value) {
 export default function Productos({params}) {
 
 
-  // const response = await fetch(`http://localhost:3000/api/productos/${category? category: 'todos'}`);
+  // const response = await fetch(`http://localhost:3000/api/productos/${category}`, {cache: "no-store"}).then(r=>r.json())
 
   // // Verifica si la respuesta es exitosa
   // if (!response.ok) {
@@ -23,8 +23,6 @@ export default function Productos({params}) {
   //     // console.log(text);
   // }
   
-  // const items = await response.json();
-  // console.log(items);
 
   const { categoryName } = React.use(params);; 
   const [items, setItems] = useState([]);

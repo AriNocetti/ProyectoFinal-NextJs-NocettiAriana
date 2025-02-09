@@ -2,9 +2,9 @@ import { NextResponse } from "next/server"
 import { collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "@/configFirebase"
 
-export async function GET(_, { params }) {
+export async function GET(request, { params }) {
     console.log('cp params', params)
-    const { categoria } = params
+    const { category } = params
     // const productosRef = collection(db, "productosRopa")
     // const q = categoria === 'todos' 
     //             ? productosRef
@@ -16,11 +16,11 @@ export async function GET(_, { params }) {
 
     let productsCollection = collection(db, "productosRopa");
 
-    if (categoria != 'todos') {
-        console.log('cat =! todos', categoria)
+    if (category != 'todos') {
+        console.log('cat =! todos', category)
         let productsCollectionFiltered = query(
             productsCollection,
-            where("category", "==", categoria)
+            where("category", "==", category)
         );
         console.log('productsCollectionFiltered', productsCollectionFiltered)
         productsCollection = productsCollectionFiltered;
@@ -33,8 +33,8 @@ export async function GET(_, { params }) {
 
     // let productsCollection = collection(db, "productosRopa");
 
-    getDocs(productsCollection).then((res) => {
-        let res = res.docs.map((elemento) => {
+    getDocs(productsCollection).then((resp) => {
+        let res = resp.docs.map((elemento) => {
             return {...elemento.data(), id: elemento.id};
             })
         return NextResponse.json(res)
