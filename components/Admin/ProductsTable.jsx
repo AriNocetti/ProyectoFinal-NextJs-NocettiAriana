@@ -5,7 +5,7 @@ import { MdDeleteOutline } from "react-icons/md";
 
 export default async function ProductsTable() {
 
-    const response = await fetch(`http://localhost:3000/api/productos`, { cache: "no-store" });
+    const response = await fetch(`${process.env.NEXT_PUBLIC_NETLIFY_URL}/api/productos`, { cache: "no-store" });
     const items = await response.json();
 
     return (
