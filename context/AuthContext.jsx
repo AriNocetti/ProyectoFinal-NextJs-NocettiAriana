@@ -3,36 +3,56 @@
 import { auth, db, provider } from "@/configFirebase";
 import { doc, getDoc } from "firebase/firestore";
 import { signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext()
 
 export const useAuthContext = () => useContext(AuthContext)
 
+
 export const AuthProvider = ({children}) => {
     const [user, setUser] = useState({
         logged: false,
-        emaiL: null,
+        email: null,
         uid: null
     })
 
     const router = useRouter()
 
     const registerUser = async (values) => {
-        await createUserWithEmailAndPassword(auth, values.email, values.password)
+        try {
+            await createUserWithEmailAndPassword(auth, values.email, values.password);
+        } catch (error) {
+            console.error("Error al registrar usuario:", error.message);
+        }
     }
 
     const loginUser = async (values) => {
-        await signInWithEmailAndPassword(auth, values.email, values.password)
+        try {
+            await signInWithEmailAndPassword(auth, values.email, values.password);
+            router.push("/admin/panel")
+        } catch (error) {
+            console.error("Error al iniciar sesión:", error.message);
+        }
     }
 
     const logout = async () => {
-        await signOut(auth)
+        try {
+            await signOut(auth);
+            router.push("/productos/todos")
+        } catch (error) {
+            console.error("Error al desloguearse:", error.message);
+        }
     }
 
     const googleLogin = async () => {
-        await signInWithPopup(auth, provider)
+        try {
+            await signInWithPopup(auth, provider);
+            router.push("/admin/panel")
+        } catch (error) {
+            console.error("Error en inicio de sesión con Google:", error.message);
+        }
     }
 
     useEffect(() => {
@@ -47,9 +67,10 @@ export const AuthProvider = ({children}) => {
                         logged: true,
                         email: user.email,
                         uid: user.uid
-                    })
+                    }) 
+                    // router.push("/admin/panel")
                 } else {
-                    router.push("/unauthorized")
+                    router.push("/productos/todos")
                     logout()
                 }
 

@@ -10,10 +10,14 @@ import FormControl from '@mui/material/FormControl';
 import { RiLoginBoxLine } from "react-icons/ri";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import CartWidget from './CartWidget';
+import { useAuthContext } from '@/context/AuthContext';
+import LogoutButton from '../Admin/LogoutButton';
 
 export default function Navbar () {
 
   const [categoryTitle, setCategoryTitle] = useState('');
+
+  const { user } = useAuthContext()
 
   const handleChange = (event) => {
     setCategoryTitle(event.target.value);
@@ -21,7 +25,7 @@ export default function Navbar () {
 
   return(
     <>
-      <div className="flex flex-row justify-around items-center bg-[#d2b4de] h-5 p-5 mb-2 pt-7">
+      <div className="flex flex-row justify-evenly items-center bg-[#d2b4de] h-5 p-5 mb-2 pt-7">
         <Link href="/productos/todos">
           <h1 className="drop-shadow-md font-medium">Aritti</h1>
         </Link>
@@ -55,8 +59,9 @@ export default function Navbar () {
           <CartWidget />
         </Link>
         <Link href="/admin/login">
-          <RiLoginBoxLine />
+          <RiLoginBoxLine width={100}/>
         </Link>
+        <LogoutButton />
       </div>
     </>
   )
