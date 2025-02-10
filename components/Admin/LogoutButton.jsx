@@ -9,7 +9,7 @@ export default function LogoutButton (){
 
     return(
         <Button onClick={logout} >
-            <RiLogoutBoxRFill className="w-5 h-5 ml-auto" />
+            <RiLogoutBoxRFill className="w-5 h-5 " />
         </Button>
     ) 
 }

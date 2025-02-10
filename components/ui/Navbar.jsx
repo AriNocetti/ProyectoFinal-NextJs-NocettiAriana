@@ -60,7 +60,7 @@ export default function Navbar () {
             <CartWidget />
           </Link>
           <Link href="/admin/login">
-            <RiLoginBoxLine className="w-5 h-5 ml-3 -mr-8 text-[#9b59b6]"/>
+            <RiLoginBoxLine className="w-5 h-5 text-[#9b59b6]"/>
           </Link>
           <LogoutButton/>
         </div>

@@ -3,11 +3,12 @@ import ProductsTable from "@/components/Admin/ProductsTable";
 
 export default async function Admin () {
 
+    const response = await fetch(`${process.env.NEXT_PUBLIC_NETLIFY_URL}/api/productos`, { cache: "no-store" });
+    const items = await response.json();
+
     return (
         <div className="container m-auto mt-6">
-            <LogoutButton />
-            <h2 className="text-2xl my-10 border-b pb-4">Panel Administración</h2>
-            <ProductsTable />
+            <ProductsTable items={items} />
         </div>
     )
 }

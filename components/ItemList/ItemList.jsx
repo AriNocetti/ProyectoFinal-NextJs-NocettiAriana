@@ -32,7 +32,7 @@ export default function ItemList({ items }){
     }
 
     return (
-        <div className="flex justify-center items-center gap-5 flex-wrap mt-11">
+        <div className="flex justify-center items-center gap-5 flex-wrap mt-11 mb-36">
             {items.map((item) => {
                 return <ProductCard key={item.id} {...item} />;
             })}
