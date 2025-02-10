@@ -25,7 +25,7 @@ export default function Navbar () {
 
   return(
     <>
-      <div className="flex flex-row justify-evenly items-center bg-[#d2b4de] h-5 p-5 mb-2 pt-7">
+      <div className="flex flex-row justify-between items-center bg-[#d2b4de] h-5 p-5 mb-2 pt-7">
         <Link href="/productos/todos">
           <h1 className="drop-shadow-md font-medium">Aritti</h1>
         </Link>
@@ -55,13 +55,15 @@ export default function Navbar () {
           {/* <FormUploadNewProduct /> */}
           <AddCircleOutlineIcon />
         </Link>
-        <Link href="/cart">
-          <CartWidget />
-        </Link>
-        <Link href="/admin/login">
-          <RiLoginBoxLine width={100}/>
-        </Link>
-        <LogoutButton />
+        <div className='flex items-center justify-end '>
+          <Link href="/cart">
+            <CartWidget />
+          </Link>
+          <Link href="/admin/login">
+            <RiLoginBoxLine className="w-5 h-5 ml-3 -mr-8 text-[#9b59b6]"/>
+          </Link>
+          <LogoutButton/>
+        </div>
       </div>
     </>
   )
