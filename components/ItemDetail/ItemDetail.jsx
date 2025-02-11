@@ -1,10 +1,28 @@
 "use client";
 
-import React from 'react'
+import React, { useContext } from 'react'
 import Counter from '../ui/counter/Counter';
+import { CartContext } from '@/context/CartContext';
+import { toast } from 'sonner';
 
 // Poner la productCard con el counter debajo
-export default function ItemDetail({ item, onAdd, totalItems }){
+export default function ItemDetail({ item }){
+
+    const {addToCart, getTotalQuantityById} = useContext(CartContext);
+
+    let totalItems = getTotalQuantityById(item.id);
+
+    const onAdd = (quantity) => {
+        let productoParaElCarrito = { ...item, quantity};
+        addToCart(productoParaElCarrito);
+
+        toast.success("Se ha agregado tu producto", {
+            closeButton: true,
+            description: "Quieres algo más?",
+            position: "top-center",
+        });
+    };
+
     return (
         <div className='ml-10 mt-5'>
             <h1 className='font-semibold text-xl'>{item.title}</h1>

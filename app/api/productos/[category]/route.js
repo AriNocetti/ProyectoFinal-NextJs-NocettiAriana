@@ -12,7 +12,6 @@ export async function GET(request, { params }) {
         productsCollection = query(productsCollection, where("category", "==", category));
     }
 
-    // 🔹 Esperamos la respuesta de Firestore antes de devolver el resultado
     const resp = await getDocs(productsCollection);
     const res = resp.docs.map((elemento) => ({
         ...elemento.data(),
@@ -20,10 +19,5 @@ export async function GET(request, { params }) {
     }));
 
     return NextResponse.json(res, { status: 200 });
-    // try {
 
-    // } catch (error) {
-    //     console.error("Error en la API:", error);
-    //     return NextResponse.json({ error: "Error interno del servidor" }, { status: 500 });
-    // }
 }

@@ -94,7 +94,7 @@ export default function Checkout () {
                     <img 
                         src="https://res.cloudinary.com/dejb7jzsz/image/upload/v1730426908/7587165_meyx3a.jpg" 
                         alt="Compra realizada" 
-                        style={{ width: "300px", height: "300px", marginTop: "30px", borderRadius: "15px"}}
+                        className="w-[300px] h-[300px] mt-9 rounded-2xl"
                     />
                 </>
             ) : (
@@ -126,6 +126,7 @@ export default function Checkout () {
                     />
                     <button 
                         type="submit"
+                        aria-label="Botón para comprar"
                         className="p-2 border-none rounded-sm bg-[#a569bd] text-white cursor-pointer hover:bg-[#a3e4d7]"
                     >
                         Comprar

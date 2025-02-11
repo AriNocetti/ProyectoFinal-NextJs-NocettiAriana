@@ -33,7 +33,7 @@ export default function ProductsTable({items}) {
     return (
         <div className="overflow-x-auto">
             <div className="flex flex-row items-center gap-6 mb-6 ml-3">
-                <h2 className="text-2xl border-b pb-4">Administración de productos</h2>
+                <h1 className="text-2xl pb-4 border-b-2 border-gray-300 font-sans">Administración de productos</h1>
                 <div className="flex pb-4">
                     <button 
                         onClick={() => handleOpenCreate()} 

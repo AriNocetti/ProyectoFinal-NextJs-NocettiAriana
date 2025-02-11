@@ -7,19 +7,19 @@ import { Facebook, Twitter, Instagram } from '@mui/icons-material';
 const Footer = () => {
     return (
     <Box
-    component="footer"
-    sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        position: 'fixed',
-        bottom: '0px',
-        alignItems: 'center',
-        padding: '6px',
-        backgroundColor: '#d2b4de',
-        color: 'black',
-        mt: '10px',
-        width: '100vw',
-    }}
+        component="footer"
+        sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            position: 'fixed',
+            bottom: '0px',
+            alignItems: 'center',
+            padding: '6px',
+            backgroundColor: '#d2b4de',
+            color: 'black',
+            mt: '10px',
+            width: '100vw',
+        }}
     >
     <Box>
     <IconButton

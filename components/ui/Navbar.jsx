@@ -12,6 +12,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import CartWidget from './CartWidget';
 import { useAuthContext } from '@/context/AuthContext';
 import LogoutButton from '../Admin/LogoutButton';
+import Image from 'next/image';
 
 export default function Navbar () {
 
@@ -28,7 +29,14 @@ export default function Navbar () {
     <>
       <div className="flex flex-row justify-between items-center bg-[#d2b4de] h-5 p-5 mb-2 pt-7">
         <Link href="/productos/todos">
-          <h1 className="drop-shadow-md font-medium">Aritti</h1>
+          <div className='flex flex-row items-center gap-3 pb-2'>
+            <Image
+              src="/logoAritti.webp"
+              alt="Logo"
+              width={40}
+              height={40}
+            />
+          </div>
         </Link>
         <FormControl variant='standard' fullWidth className='max-w-28'>
           <Select

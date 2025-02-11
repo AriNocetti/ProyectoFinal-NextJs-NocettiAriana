@@ -90,7 +90,7 @@ export default function CartRep ({cart, clearCart, deleteProductById, total}) {
             {total > 0 ? (
                 <h2 className="font-semibold">El total a pagar es : $ {total}</h2>
             ) : (
-                <h2>No tienes productos todavía</h2>
+                <h2 className="font-semibold">No tienes productos todavía</h2>
             )}
         </div>
     );
