@@ -29,6 +29,7 @@ export default function ModalDeleteProduct({ isOpen, productId, onClose }) {
                         <Button
                             type="button"
                             onClick={onClose}
+                            aria-label="Botón cancelar acción"
                             className="px-4 py-2 border rounded-lg text-white  hover:bg-[#deb3ef]"
                         >
                             Cancelar
@@ -36,6 +37,7 @@ export default function ModalDeleteProduct({ isOpen, productId, onClose }) {
                         <Button
                             type="button"
                             onClick={handleDelete}
+                            aria-label="Botón eliminar producto"
                             className="px-4 py-2  text-white hover:bg-[#f0a3db] rounded-lg hover:bg-opacity-90"
                         >
                             Eliminar

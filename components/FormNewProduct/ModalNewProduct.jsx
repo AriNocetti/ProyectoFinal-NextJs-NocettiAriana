@@ -13,7 +13,12 @@ export default function ModalNewProduct({ isOpen, onClose }) {
         <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center p-4">
             <div className="relative bg-white p-6 rounded shadow-lg">
                 {/* Botón de cierre */}
-                <button onClick={onClose} className="absolute right-4 top-4 text-gray-500 hover:text-gray-700">
+                <button 
+                    onClick={onClose} 
+                    type="button" 
+                    aria-label="Botón Cerrar modal" 
+                    className="absolute right-4 top-4 text-gray-500 hover:text-gray-700"
+                >
                     <Image src="/close-white-icon.svg" alt="Close" width={32} height={32} />
                 </button>
 

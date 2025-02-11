@@ -16,6 +16,8 @@ export default function ModalEditProduct({ initialValues, isOpen, onClose }) {
             <div className="relative bg-white p-6 rounded shadow-lg">
                 <button
                     onClick={onClose}
+                    type="button"
+                    aria-label="Botón cerrar modal"
                     className="absolute right-3 top-3 z-1500 text-gray-500 hover:text-gray-700"
                 >
                     <Image

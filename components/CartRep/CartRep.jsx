@@ -1,4 +1,5 @@
 import {Button} from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Swal from "sweetalert2";
@@ -30,31 +31,45 @@ export default function CartRep ({cart, clearCart, deleteProductById, total}) {
     };
         
     return (
-        <div style={{ padding: "50px"}}>
-            <h2>Carrito</h2>
-            {cart.map((products) => {
-                return (
-                    <div key={products.id}>
-                        <h2>{products.title}</h2>
-                        <h3>Precio: $ {products.price}</h3>
-                        <h3>Cantidad: {products.quantity}</h3>
-                        <h3>Subtotal: {products.price * products.quantity}</h3>
-                        <Button
-                            variant="contained"
-                            onClick={() => deleteProductById(products.id)}
-                        >
-                            Eliminar
-                        </Button>
-                    </div>
-                );
-            })}
+        <div className="px-4">
+            <h1 className="text-2xl font-bold py-6">Carrito</h1>
+            <div className="flex flex-wrap gap-6">
+                {cart.map((products) => {
+                    return (
+                        <div key={products.id} className="">
+                            <h2 className="text-lg font-medium mb-2">{products.title}</h2>
+                            <Image
+                                src={products.imageUrl}
+                                alt={products.title}
+                                width={70}
+                                height={70}
+                            />
+                            <h3 className="text-base font-light mb-2">Cantidad: {products.quantity}</h3>
+                            <h3 className="text-xl font-medium">Precio: $ {products.price}</h3>
+                            <h3 className="my-2">Subtotal: {products.price * products.quantity}</h3>
+                            <Button
+                                variant="contained"
+                                type="button"
+                                aria-label="Botón para eliminar producto del carrito"
+                                onClick={() => deleteProductById(products.id)}
+                                className="mt-4"
+                            >
+                                Eliminar
+                            </Button>
+                        </div>
+                    );
+                })}
+            </div>
         
             {total > 0 && (
                 <>
+                <div className="flex gap-5 mb-3">
                     <Button
                         sx={{marginTop: 20}}
                         variant="contained"
                         onClick={limpiarConAlert}
+                        type="button"
+                        aria-label="Botón limpiar carrito"
                     >
                         Limpiar carrito
                     </Button>
@@ -62,15 +77,18 @@ export default function CartRep ({cart, clearCart, deleteProductById, total}) {
                         <Button 
                             sx={{marginTop: 20}} 
                             variant="contained"
+                            type="button"
+                            aria-label="Botón Finalizar compra"
                         >
                             Finalizar compra
                         </Button>
                     </Link>
+                </div>
                 </>
             )}
         
             {total > 0 ? (
-                <h2>El total a pagar es : $ {total}</h2>
+                <h2 className="font-semibold">El total a pagar es : $ {total}</h2>
             ) : (
                 <h2>No tienes productos todavía</h2>
             )}

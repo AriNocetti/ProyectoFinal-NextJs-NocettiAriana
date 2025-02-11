@@ -35,7 +35,13 @@ export default function ProductsTable({items}) {
             <div className="flex flex-row items-center gap-6 mb-6 ml-3">
                 <h2 className="text-2xl border-b pb-4">Administración de productos</h2>
                 <div className="flex pb-4">
-                    <button onClick={() => handleOpenCreate()} ><AddCircleOutlineIcon /></button>
+                    <button 
+                        onClick={() => handleOpenCreate()} 
+                        type="button" 
+                        aria-label="Botón de crear nuevo producto" 
+                    >
+                        <AddCircleOutlineIcon />
+                    </button>
                 </div>
             </div>
             <table className="w-auto mx-auto border-collapse border text-xs text-left text-black mb-40">

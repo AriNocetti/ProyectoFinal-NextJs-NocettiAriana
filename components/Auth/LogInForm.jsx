@@ -23,7 +23,7 @@ export default function LogInForm (){
     }
 
     return(
-        <div className="fixed w-screen h-screen inset-0 z-10 flex justify-center items-center bg-blue-400 bg-opacity-25">
+        <div className="fixed w-screen h-screen inset-0 z-10 flex justify-center items-center bg-purple-400 bg-opacity-25">
             <form onSubmit={handleSubmit} className="bg-white py-4 px-6 rounded-xl max-w-md w-full">
                 <h1>Login</h1>
                 <input 
@@ -46,9 +46,9 @@ export default function LogInForm (){
                     name="password"
                     onChange={handleChange}
                 />
-                <Button onClick={() => loginUser(values)} className="mr-4">Ingresar</Button>
-                <Button onClick={() => registerUser(values)}>Registrarme</Button>
-                <Button onClick={googleLogin} className="mt-2 block">Ingresar con Google</Button>
+                <Button onClick={() => loginUser(values)} type="button" aria-label="Botón para ingresar" className="mr-4 ">Ingresar</Button>
+                <Button onClick={() => registerUser(values)} type="button" aria-label="Botón para Registrarme">Registrarme</Button>
+                <Button onClick={googleLogin} type="button" aria-label="Botón para ingresar con Google" className="mt-2 block">Ingresar con Google</Button>
             </form>
         </div>
     )
