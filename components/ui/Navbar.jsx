@@ -52,9 +52,6 @@ export default function Navbar () {
             ))}
           </Select>
         </FormControl>
-        <Link href="/NewProduct">
-          <AddCircleOutlineIcon />
-        </Link>
         <div className='flex items-center justify-end '>
           <Link href="/cart">
             <CartWidget />
