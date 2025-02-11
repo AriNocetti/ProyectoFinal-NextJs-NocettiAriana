@@ -1,5 +1,6 @@
-import LogoutButton from "@/components/Admin/LogoutButton";
+import AdminGuard from "@/components/Admin/AdminGuard";
 import ProductsTable from "@/components/Admin/ProductsTable";
+
 
 export default async function Admin () {
 
@@ -7,8 +8,10 @@ export default async function Admin () {
     const items = await response.json();
 
     return (
-        <div className="container m-auto mt-6">
-            <ProductsTable items={items} />
-        </div>
+        <AdminGuard>
+            <div className="container m-auto mt-6">
+                <ProductsTable items={items} />
+            </div>
+        </AdminGuard>
     )
 }

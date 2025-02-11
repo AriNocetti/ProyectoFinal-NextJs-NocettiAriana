@@ -3,7 +3,7 @@
 import { auth, db, provider } from "@/configFirebase";
 import { doc, getDoc } from "firebase/firestore";
 import { signInWithPopup, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext()
@@ -30,8 +30,30 @@ export const AuthProvider = ({children}) => {
 
     const loginUser = async (values) => {
         try {
-            await signInWithEmailAndPassword(auth, values.email, values.password);
-            router.push("/admin/panel")
+            const userCredential= await signInWithEmailAndPassword(auth, values.email, values.password);
+            const loggedUser = userCredential.user;
+
+            if (!loggedUser) {
+                console.log("No se pudo autenticar el usuario");
+                return;
+            }
+            // router.push("/admin/panel")
+            const userRef = doc(db, "roles",loggedUser.uid);
+            const userSnap = await getDoc(userRef);
+
+            if (!userSnap.exists()) {
+                console.error("El documento del usuario no existe en Firestore.");
+                return;
+            }
+
+            const userData = userSnap.data();
+
+            if (userData.rol === "admin") {
+                router.push("/admin/panel");
+            } else {
+                router.push("/productos/todos");
+            }
+
         } catch (error) {
             console.error("Error al iniciar sesión:", error.message);
         }
@@ -68,10 +90,11 @@ export const AuthProvider = ({children}) => {
                         email: user.email,
                         uid: user.uid
                     }) 
+                    // creo que no es necesario o si es un user tambien deberia setearse el user
                     // router.push("/admin/panel")
                 } else {
-                    router.push("/productos/todos")
-                    logout()
+                    // router.push("/productos/todos")
+                    // logout()
                 }
 
             } else {

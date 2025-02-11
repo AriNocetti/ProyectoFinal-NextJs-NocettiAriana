@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Select } from "@mui/material";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { categories } from "../categories";
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -18,6 +18,7 @@ export default function Navbar () {
   const [categoryTitle, setCategoryTitle] = useState('');
 
   const { user } = useAuthContext()
+  console.log(user)
 
   const handleChange = (event) => {
     setCategoryTitle(event.target.value);
@@ -52,7 +53,6 @@ export default function Navbar () {
           </Select>
         </FormControl>
         <Link href="/NewProduct">
-          {/* <FormUploadNewProduct /> */}
           <AddCircleOutlineIcon />
         </Link>
         <div className='flex items-center justify-end '>
