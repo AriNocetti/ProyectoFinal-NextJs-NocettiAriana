@@ -27,7 +27,7 @@ export default function Navbar () {
 
   return(
     <>
-      <div className="flex flex-row justify-between items-center bg-[#d2b4de] h-5 p-5 mb-2 pt-7">
+      <div className="flex flex-row justify-between items-center bg-[#d2b4de] h-5 p-5  pt-7">
         <Link href="/productos/todos">
           <div className='flex flex-row items-center gap-3 pb-2'>
             <Image
