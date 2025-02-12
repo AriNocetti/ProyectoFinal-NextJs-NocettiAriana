@@ -58,7 +58,7 @@ export default function Checkout () {
             });
 
         order.items.forEach((elemento) => {
-            updateDoc(doc(db, "producto", elemento.id), {
+            updateDoc(doc(db, "productosRopa", elemento.id), {
                 stock: elemento.stock - elemento.quantity,
             });
         });
